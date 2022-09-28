@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authentication is successful with TOTP 1`] = `
+Object {
+  "__typename": "User",
+  "id": "601f7ae763d6cfc2554f6b67",
+}
+`;
+
+exports[`Authentication is successful with TOTP 2`] = `"601f7ae763d6cfc2554f6b67"`;
+
+exports[`Authentication is successful with TOTP and password renewal 1`] = `
+Object {
+  "__typename": "User",
+  "id": "601f7ae763d6cfc2554f6b67",
+}
+`;
+
+exports[`Authentication is successful with TOTP and password renewal 2`] = `"601f7ae763d6cfc2554f6b67"`;
+
+exports[`Authentication rejects invalid credentials because the password does not match 1`] = `
+Array [
+  Object {
+    "extensions": Object {
+      "code": "BAD_USER_INPUT",
+      "password": "Invalid credentials",
+    },
+    "locations": Array [
+      Object {
+        "column": 3,
+        "line": 2,
+      },
+    ],
+    "message": "bad request",
+    "path": Array [
+      "response",
+    ],
+  },
+]
+`;
+
+exports[`Authentication rejects invalid credentials because the user does not exist 1`] = `
+Array [
+  Object {
+    "extensions": Object {
+      "code": "BAD_USER_INPUT",
+      "password": "Invalid credentials",
+    },
+    "locations": Array [
+      Object {
+        "column": 3,
+        "line": 2,
+      },
+    ],
+    "message": "bad request",
+    "path": Array [
+      "response",
+    ],
+  },
+]
+`;
+
+exports[`Authentication returns the user and token on valid credentials 1`] = `
+Object {
+  "__typename": "User",
+  "id": "601f7ae763d6cfc2554f6b67",
+}
+`;
+
+exports[`Authentication returns the user and token on valid credentials 2`] = `"601f7ae763d6cfc2554f6b67"`;
