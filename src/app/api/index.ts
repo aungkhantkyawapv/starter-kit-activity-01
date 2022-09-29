@@ -392,6 +392,73 @@ export type RetrieveLinkQuery = {
     retrieveLink?: { __typename: 'ResetPasswordLink'; token: string } | null;
 };
 
+export type LifeDataFragment = {
+    __typename?: 'Life';
+    id: string;
+    firstName: string;
+    lastName: string;
+    fullName: string;
+    title: string;
+    birthday: string | Date;
+    description: string;
+    hobbies: Array<string>;
+};
+
+export type GetLifeQueryVariables = Exact<{
+    id: Scalars['ObjectID'];
+}>;
+
+export type GetLifeQuery = {
+    __typename?: 'Query';
+    getLife?: {
+        __typename?: 'Life';
+        id: string;
+        firstName: string;
+        lastName: string;
+        fullName: string;
+        title: string;
+        birthday: string | Date;
+        description: string;
+        hobbies: Array<string>;
+    } | null;
+};
+
+export type ListLivesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ListLivesQuery = {
+    __typename?: 'Query';
+    listLives?: Array<{
+        __typename?: 'Life';
+        id: string;
+        firstName: string;
+        lastName: string;
+        fullName: string;
+        title: string;
+        birthday: string | Date;
+        description: string;
+        hobbies: Array<string>;
+    }> | null;
+};
+
+export type CreateLifeMutationVariables = Exact<{
+    life?: InputMaybe<LifeCreateInput>;
+}>;
+
+export type CreateLifeMutation = {
+    __typename?: 'Mutation';
+    createLife: {
+        __typename?: 'Life';
+        id: string;
+        firstName: string;
+        lastName: string;
+        fullName: string;
+        title: string;
+        birthday: string | Date;
+        description: string;
+        hobbies: Array<string>;
+    };
+};
+
 type SystemMessageData_MessageNotice_Fragment = { __typename: 'MessageNotice'; date: string | Date; message: string };
 
 type SystemMessageData_UserSessionRevoked_Fragment = {
@@ -731,6 +798,29 @@ export type CompleteWebPublicKeyCredentialRegistrationMutation = {
     completeWebPublicKeyCredentialRegistration: boolean;
 };
 
+export const LifeDataFragmentDoc = /* #__PURE__ */ {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'LifeData' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Life' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'fullName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'birthday' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'hobbies' } },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode;
 export const SystemMessageDataFragmentDoc = /* #__PURE__ */ {
     kind: 'Document',
     definitions: [
@@ -932,6 +1022,250 @@ export function useRetrieveLinkLazyQuery(
 export type RetrieveLinkQueryHookResult = ReturnType<typeof useRetrieveLinkQuery>;
 export type RetrieveLinkLazyQueryHookResult = ReturnType<typeof useRetrieveLinkLazyQuery>;
 export type RetrieveLinkQueryResult = Apollo.QueryResult<RetrieveLinkQuery, RetrieveLinkQueryVariables>;
+export const GetLifeDocument = /* #__PURE__ */ {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'getLife' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                    type: {
+                        kind: 'NonNullType',
+                        type: { kind: 'NamedType', name: { kind: 'Name', value: 'ObjectID' } },
+                    },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'getLife' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'id' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'LifeData' } }],
+                        },
+                    },
+                ],
+            },
+        },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'LifeData' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Life' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'fullName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'birthday' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'hobbies' } },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode;
+
+/**
+ * __useGetLifeQuery__
+ *
+ * To run a query within a React component, call `useGetLifeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLifeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLifeQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetLifeQuery(baseOptions: Apollo.QueryHookOptions<GetLifeQuery, GetLifeQueryVariables>) {
+    const options = { ...defaultOptions, ...baseOptions };
+
+    return Apollo.useQuery<GetLifeQuery, GetLifeQueryVariables>(GetLifeDocument, options);
+}
+export function useGetLifeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLifeQuery, GetLifeQueryVariables>) {
+    const options = { ...defaultOptions, ...baseOptions };
+
+    return Apollo.useLazyQuery<GetLifeQuery, GetLifeQueryVariables>(GetLifeDocument, options);
+}
+export type GetLifeQueryHookResult = ReturnType<typeof useGetLifeQuery>;
+export type GetLifeLazyQueryHookResult = ReturnType<typeof useGetLifeLazyQuery>;
+export type GetLifeQueryResult = Apollo.QueryResult<GetLifeQuery, GetLifeQueryVariables>;
+export const ListLivesDocument = /* #__PURE__ */ {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'listLives' },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'listLives' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'LifeData' } }],
+                        },
+                    },
+                ],
+            },
+        },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'LifeData' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Life' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'fullName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'birthday' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'hobbies' } },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode;
+
+/**
+ * __useListLivesQuery__
+ *
+ * To run a query within a React component, call `useListLivesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useListLivesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useListLivesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useListLivesQuery(baseOptions?: Apollo.QueryHookOptions<ListLivesQuery, ListLivesQueryVariables>) {
+    const options = { ...defaultOptions, ...baseOptions };
+
+    return Apollo.useQuery<ListLivesQuery, ListLivesQueryVariables>(ListLivesDocument, options);
+}
+export function useListLivesLazyQuery(
+    baseOptions?: Apollo.LazyQueryHookOptions<ListLivesQuery, ListLivesQueryVariables>
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+
+    return Apollo.useLazyQuery<ListLivesQuery, ListLivesQueryVariables>(ListLivesDocument, options);
+}
+export type ListLivesQueryHookResult = ReturnType<typeof useListLivesQuery>;
+export type ListLivesLazyQueryHookResult = ReturnType<typeof useListLivesLazyQuery>;
+export type ListLivesQueryResult = Apollo.QueryResult<ListLivesQuery, ListLivesQueryVariables>;
+export const CreateLifeDocument = /* #__PURE__ */ {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'mutation',
+            name: { kind: 'Name', value: 'createLife' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'life' } },
+                    type: { kind: 'NamedType', name: { kind: 'Name', value: 'LifeCreateInput' } },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'createLife' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'life' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'life' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'LifeData' } }],
+                        },
+                    },
+                ],
+            },
+        },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'LifeData' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Life' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'fullName' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'birthday' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'hobbies' } },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode;
+export type CreateLifeMutationFn = Apollo.MutationFunction<CreateLifeMutation, CreateLifeMutationVariables>;
+
+/**
+ * __useCreateLifeMutation__
+ *
+ * To run a mutation, you first call `useCreateLifeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateLifeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createLifeMutation, { data, loading, error }] = useCreateLifeMutation({
+ *   variables: {
+ *      life: // value for 'life'
+ *   },
+ * });
+ */
+export function useCreateLifeMutation(
+    baseOptions?: Apollo.MutationHookOptions<CreateLifeMutation, CreateLifeMutationVariables>
+) {
+    const options = { ...defaultOptions, ...baseOptions };
+
+    return Apollo.useMutation<CreateLifeMutation, CreateLifeMutationVariables>(CreateLifeDocument, options);
+}
+export type CreateLifeMutationHookResult = ReturnType<typeof useCreateLifeMutation>;
+export type CreateLifeMutationResult = Apollo.MutationResult<CreateLifeMutation>;
+export type CreateLifeMutationOptions = Apollo.BaseMutationOptions<CreateLifeMutation, CreateLifeMutationVariables>;
 export const ListenOnSystemDocument = /* #__PURE__ */ {
     kind: 'Document',
     definitions: [
