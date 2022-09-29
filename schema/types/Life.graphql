@@ -1,0 +1,50 @@
+type Life {
+    """
+    Life object ID
+    """
+    id: ObjectID!
+
+    """
+    First Name of life
+    """
+    firstName: String!
+
+    """
+    Last Name of life
+    """
+    lastName: String!
+
+    """
+    Full Name of life
+    """
+    fullName: String!
+
+    """
+    Birthday of life
+    """
+    birthday: DateTime!
+
+    """
+    Title of life
+    """
+    title: String!
+
+    """
+    Description of life
+    """
+    description: String!
+
+    """
+    Hobbies of life
+    """
+    hobbies: [String!]!
+}
+
+input LifeCreateInput {
+    firstName: String!
+    lastName: String!
+    birthday: DateTime!
+    title: String!
+    description: String!
+    hobbies: [String!]!
+}
