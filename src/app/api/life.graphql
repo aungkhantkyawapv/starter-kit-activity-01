@@ -1,0 +1,17 @@
+query getLife($id: ObjectID!) {
+    getLife(id: $id) {
+        ...LifeData
+    }
+}
+
+query listLives {
+    listLives {
+        ...LifeData
+    }
+}
+
+mutation createLife($life: LifeCreateInput) {
+    createLife(life: $life) {
+        ...LifeData
+    }
+}
