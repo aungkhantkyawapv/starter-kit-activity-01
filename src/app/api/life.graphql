@@ -4,7 +4,6 @@ query getLife($id: ObjectID!) {
     }
 }
 
-
 query listLives {
     listLives {
         ...LifeData

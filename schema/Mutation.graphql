@@ -88,5 +88,5 @@ type Mutation {
     """
     Create Life
     """
-    createLife(life: LifeCreateInput): Life!
+    createLife(life: LifeCreateInput!): Life!
 }

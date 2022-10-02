@@ -38,8 +38,8 @@ const LifeDetail = () => {
                 <Descriptions.Item label={t('title')}>{response.title}</Descriptions.Item>
                 <Descriptions.Item label={t('description')}>{response.description}</Descriptions.Item>
                 <Descriptions.Item label={t('hobbies')}>
-                    {response.hobbies.map(hobby => (
-                        <Space size="middle">
+                    {response.hobbies.map((hobby, i) => (
+                        <Space key={i} size="middle">
                             <p>{hobby.toUpperCase()}</p> &nbsp;
                         </Space>
                     ))}

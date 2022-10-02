@@ -1,0 +1,13 @@
+{
+    "lives": [
+        {
+            "_id": { "$oid": "6335582c51edb7fca921db1a" },
+            "firstName": "Aung Khant",
+            "lastName": "Kyaw",
+            "title": "Something",
+            "hobbies": ["Music", "Game", "Sleep"],
+            "description": "not at all",
+            "birthday": { "$date":  "2022-01-26T13:26:38.997Z" }
+        }
+    ]
+}

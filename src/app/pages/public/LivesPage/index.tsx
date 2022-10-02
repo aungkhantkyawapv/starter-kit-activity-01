@@ -39,7 +39,7 @@ const LivesPage = () => {
                 title: t('hobbies'),
                 dataIndex: 'hobbies',
                 key: 'hobbies',
-                render: hobbies => hobbies.map(hobby => <p>{hobby.toUpperCase()}</p>),
+                render: hobbies => hobbies.map((hobby, i) => <p key={i}>{hobby.toUpperCase()}</p>),
             },
             {
                 title: t('action'),
